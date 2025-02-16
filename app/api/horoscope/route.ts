@@ -3,6 +3,13 @@ import { generateHoroscope } from '@/lib/gemini';
 
 export async function POST(req: Request) {
   try {
+    if (!process.env.GOOGLE_AI_API_KEY) {
+      return NextResponse.json(
+        { error: 'GOOGLE_AI_API_KEY is not configured. Please check environment variables.' },
+        { status: 500 }
+      );
+    }
+
     const body = await req.json();
     console.log('API route received request:', body); // Debug log
 
@@ -23,7 +30,10 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('Error in API route:', error);
     return NextResponse.json(
-      { error: 'Failed to generate horoscope' },
+      { 
+        error: error instanceof Error ? error.message : 'Failed to generate horoscope',
+        details: process.env.NODE_ENV === 'development' ? error : undefined
+      },
       { status: 500 }
     );
   }
