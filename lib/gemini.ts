@@ -52,76 +52,76 @@ export async function generateHoroscope(zodiacSign: string, birthDetails?: Birth
     console.log('Calculated signs:', { moonSign, risingSign }); // Debug log
   }
 
-  let prompt = `Generate a personalized daily horoscope for ${zodiacSign}.`;
+  let prompt = `Generate a witty and slightly sarcastic daily horoscope for ${zodiacSign}. Keep it fun and playful while still being insightful.`;
 
   if (birthDetails?.date) {
     prompt += `\nBased on their birth details:
     - Date: ${birthDetails.date}
-    - Time: ${birthDetails.time || 'Unknown'}
-    - Location: ${birthDetails.location || 'Unknown'}
+    - Time: ${birthDetails.time || 'Unknown (probably sleeping)'}
+    - Location: ${birthDetails.location || 'Unknown (somewhere on Earth, presumably)'}
     
     Their calculated signs are:
     - Sun Sign: ${zodiacSign}
     - Moon Sign (Emotional Nature): ${moonSign}
     - Rising Sign (External Self): ${risingSign}
     
-    Provide a comprehensive personality analysis and horoscope that takes into account these three signs.
+    Create a sassy but insightful personality analysis that playfully pokes fun at typical ${zodiacSign} traits while still being helpful.
     `;
   }
 
   prompt += `
-  Format the response in clear sections with emojis and line breaks:
+  Format the response in clear sections with emojis and a dash of snark:
 
-  ${birthDetails?.date ? `🎭 Your Astrological Profile:
-  - Sun Sign (Core Identity): ${zodiacSign}
-  [Your ${zodiacSign} sun sign represents your core essence and basic personality]
+  ${birthDetails?.date ? `🎭 Your Cosmic Identity Crisis:
+  - Sun Sign (The Real You™): ${zodiacSign}
+  [How you think you're special as a ${zodiacSign}]
   
-  - Moon Sign (Emotional Nature): ${moonSign}
-  [Your ${moonSign} moon sign shapes your emotional landscape and inner world]
+  - Moon Sign (Your Emotional Baggage): ${moonSign}
+  [What keeps your therapist employed]
   
-  - Rising Sign (External Self): ${risingSign}
-  [Your ${risingSign} rising sign influences how others perceive you and your approach to the world]
+  - Rising Sign (The Fake You): ${risingSign}
+  [The personality you've crafted for your Instagram]
 
-  ⚡ Unique Combination Analysis:
-  [Analyze how ${zodiacSign} (Sun), ${moonSign} (Moon), and ${risingSign} (Rising) work together]
-  [Include specific strengths and potential challenges of this combination]
+  ⚡ Triple Threat Analysis:
+  [How these signs work together (or don't) to make you... interesting]
+  [Embrace the chaos of being a ${zodiacSign}${moonSign !== zodiacSign ? ` with ${moonSign} emotions` : ''}${risingSign !== zodiacSign ? ` pretending to be a ${risingSign}` : ''}]
 
-  🔮 Personality Keywords:
-  - Core Traits: [List 3-4 key personality traits based on the sign combination]
-  - Hidden Talents: [List 2-3 special abilities this combination brings]
-  - Growth Areas: [List 2-3 areas for personal development]
+  🔮 The Truth Hurts (But So Does Your Wallet):
+  - Obvious Traits: [3-4 stereotypical traits that you'll probably deny]
+  - Hidden Talents: [2-3 abilities you brag about but rarely use]
+  - Growth Areas: [2-3 things you should work on but probably won't]
 
   ` : ''}
   
-  🌟 Overall Mood and Energy:
-  [2-3 sentences about their general mood, energy levels, and daily outlook]
+  🌟 Today's Mood & Energy:
+  [A snarky but accurate reading of your vibe today]
 
-  💝 Love and Relationships:
-  [2-3 sentences about their romantic life, friendships, and social connections]
+  💝 Love & Drama Department:
+  [The relationship advice you need but didn't ask for]
 
-  💼 Career and Goals:
-  [2-3 sentences about work, ambitions, and opportunities]
+  💼 Career Corner (or lack thereof):
+  [Work-related insights that might actually help if you listen]
 
-  🧘‍♀️ Health and Wellness:
-  [2-3 sentences about physical and mental well-being, self-care advice]
+  🧘‍♀️ Self-Care Suggestions:
+  [Because retail therapy isn't always the answer]
 
   ${birthDetails?.date ? `
-  🌙 Moon Sign Influence Today:
-  [How their moon sign affects their emotions and intuition today]
+  🌙 Moon Sign Mood Swing:
+  [How your ${moonSign} emotions are making things... interesting today]
 
-  ⭐ Rising Sign Impact Today:
-  [How their rising sign influences their approach and appearance today]
+  ⭐ Rising Sign Reality Check:
+  [How your ${risingSign} facade is fooling exactly no one today]
 
-  💫 Sign Harmony:
-  [How their three signs are working together today and what to focus on]
+  💫 Cosmic Chaos Corner:
+  [How your signs are conspiring to make today... memorable]
   ` : ''}
 
-  🎯 Lucky Elements:
-  - Color: [lucky color]
-  - Number: [lucky number]
-  - Activity: [recommended activity]
+  🎯 Today's Cosmic Cheat Codes:
+  - Lucky Color: [something you probably don't own]
+  - Lucky Number: [completely arbitrary but you'll check your lottery tickets anyway]
+  - Suggested Activity: [something you'll consider doing but let's be real...]
 
-  Make it engaging, optimistic, and personal. Use a friendly, encouraging tone. ${birthDetails?.date ? 'Integrate insights from all three signs throughout the reading and explain how they complement or challenge each other.' : ''}`;
+  Make it witty and sarcastic but still genuinely helpful. Balance the snark with actual insights. Use a tone that's like a brutally honest best friend who roasts you but clearly wants the best for you.${birthDetails?.date ? ' Weave in playful jabs about how their three signs interact, especially if they conflict or create amusing personality quirks.' : ''}`;
 
   console.log('Generated prompt:', prompt); // Debug log
 
